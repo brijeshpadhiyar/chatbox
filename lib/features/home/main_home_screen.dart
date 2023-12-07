@@ -1,3 +1,4 @@
+import 'package:chatbox/constant/colors.dart';
 import 'package:flutter/material.dart';
 
 class MainHomeScreen extends StatelessWidget {
@@ -5,6 +6,15 @@ class MainHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 250,
+            backgroundColor: AppColors.color000,
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:chatbox/features/authentication/signup/service/signup_service.dart';
+import 'package:chatbox/widgets/errorShow/custome_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,6 +48,10 @@ class SignUpController extends GetxController {
 
   Future<void> signUpUser(String email, String password) async {
     final message = await service.signUpUser(email, password);
-    Get.snackbar("Message", message!);
+    if (message == null) {
+      CustomeSnackbar.show(title: 'Success', message: 'Sign up successful');
+    } else {
+      CustomeSnackbar.show(title: 'Error', message: message);
+    }
   }
 }
