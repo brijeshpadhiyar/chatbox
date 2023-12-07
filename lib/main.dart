@@ -1,9 +1,17 @@
-import 'package:chatbox/features/splash/splash_screen.dart';
+import 'package:chatbox/features/authentication/service/authentication_service.dart';
+import 'package:chatbox/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
+  Get.put(AutheService());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,18 +23,12 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_, child) {
-        return MaterialApp(
-          title: 'Chatbox',
+      builder: (context, child) {
+        return const GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          home: child,
+          home: CircularProgressIndicator(),
         );
       },
-      child: const SplashScreen(),
     );
   }
 }

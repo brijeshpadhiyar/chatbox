@@ -1,19 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget customeCircleIcon(String imagePath) {
-  return Container(
-    width: 48.w,
-    height: 48.h,
-    decoration: BoxDecoration(
+class CustomeIcon extends StatelessWidget {
+  final String imagePath;
+  final Color? imageColor;
+  final Color borderColor;
+  const CustomeIcon({
+    super.key,
+    required this.imagePath,
+    this.imageColor,
+    this.borderColor = Colors.transparent,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 48.w,
+      height: 48.h,
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: Colors.white,
-        )),
-    child: Center(
-      child: Image.asset(
-        imagePath,
+          color: borderColor,
+        ),
       ),
-    ),
-  );
+      child: Center(
+        child: Image.asset(
+          color: imageColor,
+          imagePath,
+        ),
+      ),
+    );
+  }
 }

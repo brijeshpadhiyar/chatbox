@@ -1,7 +1,7 @@
 import 'package:chatbox/constant/colors.dart';
 import 'package:chatbox/constant/images.dart';
 import 'package:chatbox/constant/texts.dart';
-import 'package:chatbox/features/authentication/authentication_choose.dart';
+import 'package:chatbox/features/onBoardingScreen/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const ChooseAuthentication(),
+            builder: (context) => const OnBoardingScreen(),
           ));
     });
   }

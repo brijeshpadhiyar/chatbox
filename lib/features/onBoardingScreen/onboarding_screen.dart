@@ -1,13 +1,17 @@
 import 'package:chatbox/constant/colors.dart';
 import 'package:chatbox/constant/images.dart';
 import 'package:chatbox/constant/texts.dart';
+import 'package:chatbox/features/authentication/service/firebase_sign_in.dart';
+import 'package:chatbox/features/authentication/login/ui/login_screen.dart';
+import 'package:chatbox/features/authentication/signup/ui/signup_screen.dart';
 import 'package:chatbox/widgets/authentication/circle_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ChooseAuthentication extends StatelessWidget {
-  const ChooseAuthentication({super.key});
+class OnBoardingScreen extends StatelessWidget {
+  const OnBoardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class ChooseAuthentication extends StatelessWidget {
               height: 1.sh,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [AppColors.color000, AppColors.color566, AppColors.color000],
+                  colors: [AppColors.colorA1A, AppColors.color566, AppColors.colorA1A],
                   stops: const [0.1, 1.1, 0.5],
                   transform: const GradientRotation(40),
                   begin: FractionalOffset.topCenter,
@@ -80,11 +84,24 @@ class ChooseAuthentication extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    customeCircleIcon(AppImage.facebookLogo),
+                    // CustomeIcon(AppImage.facebookLogo),
+                    CustomeIcon(
+                      imagePath: AppImage.facebookLogo,
+                      borderColor: AppColors.colorFFF,
+                    ),
                     SizedBox(width: 30.w),
-                    customeCircleIcon(AppImage.googleLogo),
+                    InkWell(
+                      onTap: () => SignInService().signInWithGoogle(),
+                      child: CustomeIcon(
+                        imagePath: AppImage.googleLogo,
+                        borderColor: AppColors.colorFFF,
+                      ),
+                    ),
                     SizedBox(width: 30.w),
-                    customeCircleIcon(AppImage.appleLogo),
+                    CustomeIcon(
+                      imagePath: AppImage.appleWhiteLogo,
+                      borderColor: AppColors.colorFFF,
+                    ),
                   ],
                 ),
                 const Spacer(),
@@ -112,7 +129,9 @@ class ChooseAuthentication extends StatelessWidget {
                 ),
                 const Spacer(),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => const SignUpScreen());
+                  },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.colorFFF,
                       fixedSize: Size(327.w, 48.h),
@@ -129,7 +148,9 @@ class ChooseAuthentication extends StatelessWidget {
                 ),
                 const Spacer(),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => const LoginScreen());
+                  },
                   child: Text.rich(
                     TextSpan(
                       children: [
