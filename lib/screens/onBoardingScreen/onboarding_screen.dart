@@ -1,9 +1,9 @@
 import 'package:chatbox/constant/colors.dart';
 import 'package:chatbox/constant/images.dart';
 import 'package:chatbox/constant/texts.dart';
-import 'package:chatbox/features/authentication/service/firebase_sign_in.dart';
-import 'package:chatbox/features/authentication/login/ui/login_screen.dart';
-import 'package:chatbox/features/authentication/signup/ui/signup_screen.dart';
+import 'package:chatbox/service/authentication/firebase_sign_in.dart';
+import 'package:chatbox/screens/authentication/login/login_screen.dart';
+import 'package:chatbox/screens/authentication/signup/signup_screen.dart';
 import 'package:chatbox/widgets/authentication/circle_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

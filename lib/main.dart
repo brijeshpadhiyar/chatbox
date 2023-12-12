@@ -1,4 +1,4 @@
-import 'package:chatbox/features/authentication/service/authentication_service.dart';
+import 'package:chatbox/service/authentication/authentication_service.dart';
 import 'package:chatbox/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(ScreenUtilInit(
+    designSize: const Size(375, 812),
+    minTextAdapt: true,
+    splitScreenMode: true,
+    builder: (context, child) => const MyApp(),
+  ));
   Get.put(AutheService());
 }
 
@@ -19,16 +24,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return const GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: CircularProgressIndicator(),
-        );
-      },
+    return const GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CircularProgressIndicator(),
     );
   }
 }

@@ -1,5 +1,5 @@
-import 'package:chatbox/features/home/main_home_screen.dart';
-import 'package:chatbox/features/splash/splash_screen.dart';
+import 'package:chatbox/screens/home/main_home_screen.dart';
+import 'package:chatbox/screens/splash/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 

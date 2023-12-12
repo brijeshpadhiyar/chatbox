@@ -1,12 +1,12 @@
 import 'package:chatbox/constant/text_styles.dart';
 import 'package:chatbox/constant/texts.dart';
-import 'package:chatbox/features/authentication/signup/controller/sign_up_controller.dart';
+import 'package:chatbox/controller/authentication/signup/sign_up_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../constant/colors.dart';
+import '../../../constant/colors.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

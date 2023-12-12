@@ -1,4 +1,4 @@
-import 'package:chatbox/features/authentication/signup/service/signup_service.dart';
+import 'package:chatbox/service/authentication/signup_service.dart';
 import 'package:chatbox/widgets/errorShow/custome_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
