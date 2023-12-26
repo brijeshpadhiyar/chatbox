@@ -1,4 +1,5 @@
-import 'package:chatbox/constant/colors.dart';
+import 'package:chatbox/screens/splash/splash_screen.dart';
+import 'package:chatbox/service/authentication/firebase_sign_in.dart';
 import 'package:flutter/material.dart';
 
 class MainHomeScreen extends StatelessWidget {
@@ -6,15 +7,26 @@ class MainHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final service = FirebaseService();
+
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            expandedHeight: 250,
-            backgroundColor: AppColors.color000,
-          ),
+        body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              service.signOunt();
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SplashScreen(),
+                  ));
+            },
+            child: const Text('Sign Out'),
+          )
         ],
       ),
-    );
+    ));
   }
 }

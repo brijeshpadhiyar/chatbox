@@ -1,9 +1,12 @@
+import 'package:chatbox/blocs/Authentication/authentication_bloc.dart';
+import 'package:chatbox/screens/home/main_home_screen.dart';
+import 'package:chatbox/screens/splash/splash_screen.dart';
 import 'package:chatbox/service/authentication/authentication_service.dart';
 import 'package:chatbox/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,19 +17,38 @@ void main() async {
     designSize: const Size(375, 812),
     minTextAdapt: true,
     splitScreenMode: true,
-    builder: (context, child) => const MyApp(),
+    builder: (context, child) {
+      return BlocProvider(
+        create: (context) => authenticationBloc,
+        child: const MyApp(),
+      );
+    },
   ));
-  Get.put(AutheService());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    AuthenticationService();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CircularProgressIndicator(),
-    );
+    return BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+      return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: state is UserLoggedState
+              ? const MainHomeScreen()
+              : const SplashScreen());
+    });
   }
 }

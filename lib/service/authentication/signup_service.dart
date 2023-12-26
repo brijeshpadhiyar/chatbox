@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
 
-class SignUpService extends GetxService {
+class SignUpService {
   Future<String?> signUpUser(String email, String password) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
